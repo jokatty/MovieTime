@@ -22,7 +22,7 @@ module.exports = merge(common, {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
-              require.resolve('react-refresh/babel'),
+              require.resolve('react-refresh/babel'), '@babel/plugin-transform-runtime',
             ].filter(Boolean),
           },
         },
@@ -40,6 +40,11 @@ module.exports = merge(common, {
       // name this file main, so that it does not get automatically requested as a static file
       filename: './main.html',
       template: path.resolve(__dirname, '..', 'src', 'index.html'),
+    }),
+    // second html file
+    new HtmlWebpackPlugin({
+      filename: './search.html',
+      template: path.resolve(__dirname, '..', 'src', 'search.html'),
     }),
 
   ].filter(Boolean),
