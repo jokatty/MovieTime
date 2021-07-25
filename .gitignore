@@ -6,3 +6,8 @@ node_modules/
 
 # Distribution folder compiled by Webpack
 dist
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production

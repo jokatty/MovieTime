@@ -1,8 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import methodOverride from 'method-override';
 import bindRoutes from './routes.mjs';
 
+console.log(process.env.API_KEY);
 // Initialise Express instance
 const app = express();
 // Set the Express view engine to expect EJS templates
