@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   // define the state of the serach movie input
@@ -14,6 +15,12 @@ export default function Header() {
     const response = await axios.post('/search', { movieName });
     console.log(response);
   }
+
+  //  send data with the params in the link to Search Component
+  const searchPage = {
+    pathname: `/search-result/${movie}`,
+  };
+
   return (
     <div className="custom-nav">
       <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -24,10 +31,9 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarScroll">
           <ul className="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/">
                 Home
-                <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Link</a>
@@ -54,7 +60,9 @@ export default function Header() {
                 handleClick(event);
               }}
             >
-              Search
+              <Link to={searchPage} className="nav-link">
+                Search
+              </Link>
             </button>
           </form>
         </div>
