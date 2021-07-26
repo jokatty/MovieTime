@@ -25,6 +25,7 @@ module.exports = merge(common, {
       template: path.resolve(__dirname, '..', 'src', 'search.html'),
       alwaysWriteToDisk: true,
     }),
+
   ],
   module: {
     rules: [

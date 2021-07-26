@@ -46,6 +46,10 @@ module.exports = merge(common, {
       filename: './search.html',
       template: path.resolve(__dirname, '..', 'src', 'search.html'),
     }),
+    // process plugin to use process.env
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
 
   ].filter(Boolean),
 });

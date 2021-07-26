@@ -11,9 +11,14 @@ export default function routes(app) {
     response.sendFile(resolve('dist', 'main.html'));
   });
   // get the movie search result page
-  app.get('/search', (request, response) => {
-    response.sendFile(resolve('dist', 'search.html'));
-  });
-  // post request for search a movie by name
+  // app.get('/search', (request, response) => {
+  //   response.sendFile(resolve('dist', 'search.html'));
+  // });
+
+  // app.post('/search', movieController.showMovie);
+
+  //  get the latest movies.receiving axios request from FE of our app
+  app.get('/top-rated', movieController.showTopRated);
+  // post request for search a movie by name. receiving axios request from the FE of our app
   app.post('/search', movieController.showMovie);
 }
