@@ -12,8 +12,10 @@ export default function SearchedMovieInfo(props) {
     const { movieName } = props;
     const response = await axios.post('/search', { movieName });
     console.log(response.data.title);
-    const movieTitle = response.data;
-    setSearchedMovie(movieTitle);
+    const movieData = response.data;
+    setSearchedMovie(movieData);
+    // this will update the state of parent's(Search.mjs) movieid
+    props.setMovieId(response.data.id);
   }, []);
 
   return (
