@@ -11,7 +11,6 @@ export default function SearchedMovieInfo(props) {
   useEffect(async () => {
     const { movieName } = props;
     const response = await axios.post('/search', { movieName });
-    console.log(response.data.title);
     const movieData = response.data;
     setSearchedMovie(movieData);
     // this will update the state of parent's(Search.mjs) movieid
@@ -25,7 +24,6 @@ export default function SearchedMovieInfo(props) {
         <img src={searchedMovie.image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{searchedMovie.title}</h5>
-          {console.log(searchedMovie.title)}
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="#" className="btn btn-primary">Go somewhere</a>
         </div>
