@@ -1,6 +1,10 @@
 import { Sequelize } from 'sequelize';
 import url from 'url';
 import allConfig from '../config/config.js';
+import initMovieModel from './movie.mjs';
+import initReactionModel from './reaction.mjs';
+import initReviewModel from './review.mjs';
+import initUserModel from './user.mjs';
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -29,6 +33,20 @@ if (env === 'production') {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+db.User = initUserModel(sequelize, Sequelize.DataTypes);
+db.Movie = initMovieModel(sequelize, Sequelize.DataTypes);
+db.Review = initReviewModel(sequelize, Sequelize.DataTypes);
+db.Reaction = initReactionModel(sequelize, Sequelize.DataTypes);
+
+// The following 2 lines enable Sequelize to recognise the 1-M relationship
+// between Item and Category models, providing the mixin association methods.
+db.Review.belongsTo(db.User);
+db.User.hasMany(db.Review);
+db.Review.belongsTo(db.Movie);
+db.Movie.hasMany(db.Review);
+db.Reaction.belongsTo(db.Review);
+db.Review.hasMany(db.Reaction);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

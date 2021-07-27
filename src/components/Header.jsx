@@ -1,25 +1,19 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Header() {
   // define the state of the serach movie input
   const [movie, setMovie] = useState('');
 
-  async function handleClick() {
-    // const movieName = event.target.value;
-    // console.log(movieName);
-    const movieName = movie;
-    console.log(movieName);
-    // const response = await axios.get('/search', { movieName });
-    const response = await axios.post('/search', { movieName });
-    console.log(response);
-  }
-
   //  send data with the params in the link to Search Component
   const searchPage = {
     pathname: `/search-result/${movie}`,
   };
+
+  // function handleClick() {
+  //   <Redirect to={searchPage} />;
+  // }
 
   return (
     <div className="custom-nav">
@@ -39,7 +33,6 @@ export default function Header() {
               <a className="nav-link" href="#">Link</a>
             </li>
           </ul>
-          {/* <form className="d-flex" method="POST" action="/search"> */}
           <form className="d-flex">
             <input
               className="form-control mr-2"
@@ -52,13 +45,10 @@ export default function Header() {
                 setMovie(event.target.value);
               }}
             />
-            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
             <button
               className="btn btn-outline-success"
               type="button"
-              onClick={(event) => {
-                handleClick(event);
-              }}
+              // onClick={handleClick}
             >
               <Link to={searchPage} className="nav-link">
                 Search
