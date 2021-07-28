@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Avatar, Grid, Paper } from '@material-ui/core';
+import axios from 'axios';
 
 export default function OldComments(props) {
+  // query the db for all comments belonging to the movieId in the props
+  useEffect(async () => {
+    const comments = await axios.get('/comments');
+    console.log(comments);
+  });
   return (
     <>
       {props.newComment.map((entry) => <p>{entry}</p>)}

@@ -10,6 +10,9 @@ export default function initMovieModel(sequelize, DataTypes) {
       name: {
         type: DataTypes.STRING,
       },
+      imdb: {
+        type: DataTypes.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

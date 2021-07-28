@@ -3,12 +3,15 @@ export default function initCommentController(db) {
     const { comment, movieId } = req.body;
     console.log(req.body);
     // save the comment in the db
-    // IN NEED MOVIE ID here.
-    // await db.Review.create({
-    //   comment:comment,
-
-    // })
-    res.send('received comment to server');
+    try {
+      await db.Review.create({
+        comment,
+        movieImdb: movieId,
+      });
+      res.send('received comment to server');
+    } catch (error) {
+      console.log(error.stack);
+    }
   };
   return {
     create,

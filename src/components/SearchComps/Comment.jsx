@@ -11,8 +11,11 @@ export default function Comment(props) {
     const response = await axios.post('/comment', { comment, movieId: props.movieId });
     // clear the comment input field.
     setComment('');
+    // if adding data is successful.
     // update the parent's state
-    props.setNewComment([...props.newComment, comment]);
+    if (response.status === 200) {
+      props.setNewComment([comment, ...props.newComment]);
+    }
   }
 
   return (

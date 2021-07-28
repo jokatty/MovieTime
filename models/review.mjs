@@ -10,6 +10,9 @@ export default function initReviewModel(sequelize, DataTypes) {
       comment: {
         type: DataTypes.STRING,
       },
+      movieImdb: {
+        type: DataTypes.STRING,
+      },
       movieId: {
         type: DataTypes.INTEGER,
         // This links the movie_id column to the id column in the movie table

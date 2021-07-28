@@ -22,7 +22,7 @@ export default function Search(props) {
       {/* pass the new comment state so that parent gets updated when new comment is passed */}
       <Comment movieId={movieId} newComment={newComment} setNewComment={setNewComment} />
       {/* send newComemnts data as props */}
-      <OldComments newComment={newComment} />
+      <OldComments newComment={newComment} movieId={movieId} />
     </>
   );
 }
