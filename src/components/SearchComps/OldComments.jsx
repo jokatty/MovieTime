@@ -1,22 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, Grid, Paper } from '@material-ui/core';
 import axios from 'axios';
 
 export default function OldComments(props) {
+  //  set the state for the display of comments
+  const [comments, setComments] = useState([]);
   // query the db for all comments belonging to the movieId in the props
   useEffect(async () => {
-    const comments = await axios.get('/comments');
-    console.log(comments);
-  });
+    const allComments = await axios.get(`/comment/${props.movieId}`);
+    console.log(allComments);
+    if (props.movieId !== 0) {
+      setComments(allComments.data[2].comment);
+    }
+    // console.log('hi');
+  }, []);
+
   return (
     <>
-      {props.newComment.map((entry) => <p>{entry}</p>)}
+      {props.newComment.map((entry) => <p key={entry}>{entry}</p>)}
+      <p>These are old comments: </p>
+      <p>{comments}</p>
+      {/* {comments.map((comment) => <p>{comment}</p>)} */}
       <Paper style={{ padding: '40px 20px', marginTop: 100 }} elevation={1}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Avatar alt="" src="{imgLink}" />
           </Grid>
-          <Grid justifyContent="left" item xs zeroMinWidth>
+          <Grid item xs zeroMinWidth>
             <h4 style={{ margin: 0, textAlign: 'left' }}>Jo</h4>
             <p style={{ textAlign: 'left' }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import SearchedMovieInfo from './components/SearchComps/SearchedMovieInfo.jsx';
 import Comment from './components/SearchComps/Comment.jsx';
 import OldComments from './components/SearchComps/OldComments.jsx';
@@ -10,7 +11,6 @@ export default function Search(props) {
   const [movieId, setMovieId] = useState(0);
   // set state for user comment. Gets updated in the comment component.
   const [newComment, setNewComment] = useState([]);
-  console.log(newComment);
   const params = useParams();
   const { movieName } = props.match.params;
   return (

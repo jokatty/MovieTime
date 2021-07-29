@@ -13,7 +13,21 @@ export default function initCommentController(db) {
       console.log(error.stack);
     }
   };
+
+  const show = async (req, res) => {
+    const { movieId } = req.params;
+    console.log('GET REQEUST CAME IN');
+    console.log(movieId);
+    const comments = await db.Review.findAll({
+      where: {
+        movieImdb: movieId,
+      },
+    });
+    console.log(comments);
+    res.send(comments);
+  };
   return {
     create,
+    show,
   };
 }

@@ -16,7 +16,7 @@ export default function SearchedMovieInfo(props) {
     // this will update the state of parent's(Search.mjs) movieid
     props.setMovieId(response.data.id);
   }, []);
-
+  console.log(searchedMovie);
   return (
     <>
       <p>hey movie info</p>

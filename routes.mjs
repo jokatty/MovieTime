@@ -25,4 +25,6 @@ export default function routes(app) {
   app.post('/search', movieController.showMovie);
   // post request for user's comment on movie
   app.post('/comment', commentController.create);
+  // get comments when user visits a movie page
+  app.get('/comment/:movieId', commentController.show);
 }
