@@ -25,7 +25,7 @@ export default function Comment(props) {
         placeholder="write your review"
         multiline
         rows={1}
-        rowsMax={Infinity}
+        maxRows={Infinity}
         value={comment}
         onChange={(event) => {
           setComment(event.target.value);

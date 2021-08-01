@@ -10,10 +10,10 @@ export default function OldComments(props) {
     const allComments = await axios.get(`/comment/${props.movieId}`);
     console.log(allComments);
     if (props.movieId !== 0) {
-      setComments(allComments.data[2].comment);
+      setComments(allComments.data[3].comment);
     }
-    // console.log('hi');
-  }, []);
+    console.log('hi');
+  }, [props.movieId]);
 
   return (
     <>
